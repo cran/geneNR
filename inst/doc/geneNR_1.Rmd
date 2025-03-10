@@ -1,0 +1,134 @@
+---
+title: "Introduction of 'geneNR'"
+author: "Rajamani Nirmalaruban"
+date: "2025-02-20"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction of 'geneNR'}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+<span style="font-size: 18px;font-weight: bold;">Introduction:</span>
+
+<span style="font-size: 16px;">The geneNR package is designed to streamline the post-GWAS (Genome-Wide Association Studies) analysis by automating the identification of candidate genes within a user-defined search window based on the identified SNPs (Single Nucleotide Polymorphisms). This package provides robust support for candidate gene analysis specifically for wheat and rice, making it an invaluable tool for researchers working in the field of genomics.</span>
+
+<span style="font-size: 18px;font-weight: bold;">Key Features:</span>
+
+<span style="font-size: 16px;">***Automated Search and Retrieval:*** geneNR simplifies the labor-intensive process of manually searching and retrieving candidate genes. By leveraging the package, researchers can save time and focus on interpreting results rather than conducting repetitive search.</span>
+
+<span style="font-size: 16px;">***User-Defined Search Window:*** The package allows users to define their own search window parameters, providing flexibility and customization to suit various research needs.</span>
+
+<span style="font-size: 16px;">***Support for Wheat and Rice:*** With a focus on two of the most important staple crops, wheat and rice, geneNR ensures targeted and relevant candidate gene analysis, aiding in crop improvement and genetic research efforts.</span>
+
+<span style="font-size: 18px;font-weight: bold;">How It Works:</span>
+
+<span style="font-size: 16px;">***Importing GWAS Results:*** Users begin by importing their GWAS results into the geneNR package. The package includes detailed instructions and a sample_data file to guide users through this process.</span>
+
+<span style="font-size: 16px;">***Identification of Candidate Genes:*** Once the GWAS results are imported, geneNR identifies candidate genes within the specified search window based on the SNPs provided. This automated process not only eliminates the need for manual searches but also significantly reduces the time required, ensuring both accuracy and efficiency.</span>
+
+<span style="font-size: 16px;">***Exporting Results:*** After the candidate genes are identified, the package exports the results into a ready-to-use output. This format is convenient for further analysis, reporting, and sharing with collaborators.</span>
+
+<span style="font-size: 18px;font-weight: bold;">Installation:</span>
+
+<span style="font-size: 16px;">To install geneNR package, use the following commands in R:</span>
+
+<span style="font-size: 16px;">The geneNR package is currently in the process of being submitted to CRAN. Once accepted, users will be able to install the package directly from CRAN using the following command in R:</span>
+```{r geneNR, eval=FALSE}
+# Install the geneNR package (when published on CRAN)
+install.packages("geneNR")
+
+or 
+# Installation from GitHub (if not available on CRAN)
+# Uncomment and run the following commands manually:
+# if (!requireNamespace("devtools", quietly = TRUE)) {
+#   install.packages("devtools")
+# }
+# devtools::install_github("Nirmalaruban/geneNR")
+
+```
+
+
+<span style="font-size: 18px;font-weight: bold;">Note:</span>
+
+<span style="font-size: 16px;">As the geneNR package has not been officially published yet, researchers who wish to use it in their studies are encouraged to contact R. Nirmalaruban (Maintainer) at nirmalaruban97@gmail.com. This will ensure that any updates or issues can be addressed promptly, and users can receive the latest information about the package.</span>
+
+<span style="font-size: 18px;font-weight: bold;">Data:</span>
+
+<span style="font-size: 16px;">The geneNR package includes sample data for both wheat and rice to demonstrate its functionality. Users can provide their GWAS result files in .csv format to mine candidate genes.</span>
+
+<span style="font-size: 18px;">Sample Data Skeleton:</span>
+
+<span style="font-size: 16px;">Here is a sample data skeleton for GWAS results:</span>
+
+<span style="font-size: 16px;">
+
+    | traits  |   SNP       | Chr  |   Pos   |
+    |----------------------------------------|
+    |  PH     | AX-94490431 | 7A   |93007534 |
+    |         |             |      |         |
+    
+</span>
+
+<span style="font-size: 16px;">This table represents the GWAS result data structure required by the geneNR package. Users can format their GWAS results in a similar manner and save them as .csv files for input.</span>
+
+<span style="font-size: 18px;font-weight: bold;">Note:</span>
+
+<span style="font-size: 16px;">For smooth functioning of the package, please ensure that the data files are placed in the working directory.</span>
+
+<span style="font-size: 18px;font-weight: bold;">Parameters:</span>
+
+<span style="font-size: 16px;">The function accepts the following parameters:</span>
+
+<span style="font-size: 16px;">
+
+data_file: The input data in .csv format.
+
+upstream: The search window upstream of the current position of the SNP.
+
+downstream: The search window downstream of the current position of the SNP.
+
+Crop: Either "wheat" or "rice". </span>
+
+<span style="font-size: 18px;font-weight: bold;">Note:</span>
+
+<span style="font-size: 16px;">Both upstream and downstream can be specified by the user in base pairs. By default, the search window is set to 10^6 bp (1 Mbp).</span>
+
+<span style="font-size: 18px;font-weight: bold;">Output:</span>
+
+<span style="font-size: 16px;">Upon running the function, the results will be saved in a filtered_gene_id.csv file in the current working directory. This file will contain the following columns: traits, SNP, search_window, gene_size, gene_id, and gene_type. The candidate genes for the respective regions are retrieved from Ensembl Plants (https://plants.ensembl.org/index.html).</span>
+
+<span style="font-size: 18px;">Output Format Example:</span>
+
+<span style="font-size: 16px;">
+
+    | traits  |  SNP  |  search_window | gene_size | gene_id | gene_type    |
+    |-----------------------------------------------------------------------|
+    |         |       |                |           |         |protein coding|
+
+</span>
+
+
+
+<span style="font-size: 16px;">By using the geneNR package, researchers can significantly enhance the efficiency and accuracy of their post-GWAS analyses, ultimately contributing to the advancement of genomic research and crop improvement.</span>
+
+
+<span style="font-size: 18px;font-weight: bold;">Glossary:</span>
+
+<span style="font-size: 16px;">
+- **GWAS**: Genome-Wide Association Studies  
+- **SNP**: Single Nucleotide Polymorphism  
+- **API**: Application Programming Interface  
+- **Mbp**: Megabase Pair (1,000,000 base pairs)  
+- **CSV**: Comma-Separated Values  
+</span>
+
+

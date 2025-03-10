@@ -1,0 +1,16 @@
+c5790605312f0f9682f6e92bc3a86f38 *DESCRIPTION
+739291b47f18e97757350c1be6dccdfb *NAMESPACE
+c0b232817d8c1732f1d4154879f605e8 *R/geneSNP.R
+b5a03ddee3b0a642a282c7ce0b8cb2a1 *R/sample_data_rice.R
+663c313d358bcf3dd513d6c612d0edae *R/sample_data_wheat.R
+5381cb1d0fcba96cc4b0878232bf1775 *build/vignette.rds
+c434b408c9a2509b3372f7847433cb47 *data/sample_data_rice.rda
+3a620e92fc999abead8f133fe905522d *data/sample_data_wheat.rda
+948a56a63edd47224304b4d25753f678 *inst/doc/geneNR_1.R
+a35bae8bd80091adc72e7faa0674676d *inst/doc/geneNR_1.Rmd
+49f754e9f6d40612eb2ada1d9573939a *inst/doc/geneNR_1.html
+5b6ebc0edab2cbbac9cf29e2cc2dfb6d *inst/extdata/precomputed_sample_results.rda
+1e98aa3fe2d7086b22fc2e4228ad9a59 *man/geneSNP.Rd
+d5b08e7a559be12079cee7b0f60d1c58 *man/sample_data_rice.Rd
+48cc6a2207937adf1094ebe093a4d039 *man/sample_data_wheat.Rd
+a35bae8bd80091adc72e7faa0674676d *vignettes/geneNR_1.Rmd
