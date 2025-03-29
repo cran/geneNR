@@ -348,12 +348,13 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <h2>R Markdown</h2>
 <p><span style="font-size: 18px;font-weight: bold;">Introduction:</span></p>
 <p><span style="font-size: 16px;">The geneNR package is designed to
-streamline the post-GWAS (Genome-Wide Association Studies) analysis by
-automating the identification of candidate genes within a user-defined
-search window based on the identified SNPs (Single Nucleotide
-Polymorphisms). This package provides robust support for candidate gene
-analysis specifically for wheat and rice, making it an invaluable tool
-for researchers working in the field of genomics.</span></p>
+streamline the post-GWAS (Genome-Wide Association Studies) and QTL
+(Quantitative Trait Loci) analysis by automating the identification of
+candidate genes within a user-defined search window based on the
+identified SNPs (Single Nucleotide Polymorphisms)or QTLs. This package
+provides robust support for candidate gene analysis specifically for
+wheat and rice, making it an invaluable tool for researchers working in
+the field of genomics.</span></p>
 <p><span style="font-size: 18px;font-weight: bold;">Key
 Features:</span></p>
 <p><span style="font-size: 16px;"><strong><em>Automated Search and
@@ -373,15 +374,16 @@ efforts.</span></p>
 <p><span style="font-size: 18px;font-weight: bold;">How It
 Works:</span></p>
 <p><span style="font-size: 16px;"><strong><em>Importing GWAS
-Results:</em></strong> Users begin by importing their GWAS results into
-the geneNR package. The package includes detailed instructions and a
-sample_data file to guide users through this process.</span></p>
+Results:</em></strong> Users begin by importing their GWAS or QTL
+results into the geneNR package. The package includes detailed
+instructions and a sample_data file to guide users through this
+process.</span></p>
 <p><span style="font-size: 16px;"><strong><em>Identification of
-Candidate Genes:</em></strong> Once the GWAS results are imported,
-geneNR identifies candidate genes within the specified search window
-based on the SNPs provided. This automated process not only eliminates
-the need for manual searches but also significantly reduces the time
-required, ensuring both accuracy and efficiency.</span></p>
+Candidate Genes:</em></strong> Once the GWAS or QTL results are
+imported, geneNR identifies candidate genes within the specified search
+window based on the SNPs provided. This automated process not only
+eliminates the need for manual searches but also significantly reduces
+the time required, ensuring both accuracy and efficiency.</span></p>
 <p><span style="font-size: 16px;"><strong><em>Exporting
 Results:</em></strong> After the candidate genes are identified, the
 package exports the results into a ready-to-use output. This format is
@@ -390,10 +392,9 @@ collaborators.</span></p>
 <p><span style="font-size: 18px;font-weight: bold;">Installation:</span></p>
 <p><span style="font-size: 16px;">To install geneNR package, use the
 following commands in R:</span></p>
-<p><span style="font-size: 16px;">The geneNR package is currently in the
-process of being submitted to CRAN. Once accepted, users will be able to
-install the package directly from CRAN using the following command in
-R:</span></p>
+<p><span style="font-size: 16px;">The geneNR package is currently
+available in CRAN. Users can install the package directly from CRAN
+using the following command in R:</span></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="co"># Install the geneNR package (when published on CRAN)</span></span>
 <span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;geneNR&quot;</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a></span>
@@ -405,17 +406,53 @@ R:</span></p>
 <span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a><span class="co"># }</span></span>
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;Nirmalaruban/geneNR&quot;)</span></span></code></pre></div>
 <p><span style="font-size: 18px;font-weight: bold;">Note:</span></p>
-<p><span style="font-size: 16px;">As the geneNR package has not been
-officially published yet, researchers who wish to use it in their
-studies are encouraged to contact R. Nirmalaruban (Maintainer) at <a href="mailto:nirmalaruban97@gmail.com" class="email">nirmalaruban97@gmail.com</a>. This will ensure that any
-updates or issues can be addressed promptly, and users can receive the
-latest information about the package.</span></p>
+<p><span style="font-size: 16px;">As the <b>geneNR</b> package has now
+been officially published on CRAN, users are kindly requested to duly
+cite the package in their studies. Proper citation ensures
+acknowledgment of the efforts behind its development and facilitates
+further usage by the research community. If users require further
+assistance or have any inquiries, they are encouraged to contact R.
+Nirmalaruban (Maintainer) at <a href="mailto:nirmalaruban97@gmail.com" class="email">nirmalaruban97@gmail.com</a>.</span></p>
 <p><span style="font-size: 18px;font-weight: bold;">Data:</span></p>
 <p><span style="font-size: 16px;">The geneNR package includes sample
 data for both wheat and rice to demonstrate its functionality. Users can
 provide their GWAS result files in .csv format to mine candidate
 genes.</span></p>
-<p><span style="font-size: 18px;">Sample Data Skeleton:</span></p>
+<p><span style="font-size: 18px;font-weight: bold;">geneQTL():</span></p>
+<p><span style="font-size: 16px;">Identifies candidate genes based on
+QTL (Quantitative Trait Loci) analysis results. Users need to provide
+input data specifying QTLs, their chromosomal positions, and regions of
+interest. </span></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">geneQTL</span>(<span class="st">&quot;sample_data_wheat_qtl&quot;</span>, <span class="at">crop=</span><span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">geneQTL</span>(<span class="st">&quot;sample_data_rice_qtl&quot;</span>, <span class="at">crop=</span><span class="st">&quot;rice&quot;</span>)</span></code></pre></div>
+<p><span style="font-size: 16px;">Here is a sample data skeleton for QTL
+results to be given as input :</span></p>
+<p><span style="font-size: 16px;"></p>
+<pre><code>| traits  | Chr | start   |   stop   |
+|------------------------------------|
+|  PH     | 7A  |93007534 |95007534  |
+|         |     |         |          |</code></pre>
+<p></span></p>
+<p><span style="font-size: 18px;font-weight: bold;">Parameters:</span></p>
+<p><span style="font-size: 16px;">The function accepts the following
+parameters:</span></p>
+<p><span style="font-size: 16px;"></p>
+<p>data_file: Input QTL data in .csv format (which needs to contains
+columns as detailed above in sample_data_wheat_qtl).</p>
+<p>Crop: Either “wheat” or “rice”.</p>
+<p>Output A .csv file containing candidate genes retrieved for the
+specified QTL regions.</span></p>
+<p><span style="font-size: 18px;">Output Format Example:</span></p>
+<p><span style="font-size: 16px;"></p>
+<pre><code>| traits  |  QTL  |  gene_size | gene_id | gene_type    |
+|-------------------------------------------------------|
+|         |       |            |         |protein coding|</code></pre>
+<p></span></p>
+<p><span style="font-size: 18px;font-weight: bold;">geneSNP()</span></p>
+<p><span style="font-size: 16px;">Identifies candidate genes based on
+identified SNPs from GWAS results.</span></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">geneSNP</span>(<span class="st">&quot;sample_data_wheat&quot;</span>, <span class="dv">10000</span>, <span class="dv">10000</span>, <span class="at">crop =</span> <span class="st">&quot;wheat&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">geneSNP</span>(<span class="st">&quot;sample_data_rice&quot;</span>, <span class="dv">10000</span>, <span class="dv">10000</span>, <span class="at">crop =</span> <span class="st">&quot;rice&quot;</span>)</span></code></pre></div>
 <p><span style="font-size: 16px;">Here is a sample data skeleton for
 GWAS results:</span></p>
 <p><span style="font-size: 16px;"></p>
@@ -424,14 +461,6 @@ GWAS results:</span></p>
 |  PH     | AX-94490431 | 7A   |93007534 |
 |         |             |      |         |</code></pre>
 <p></span></p>
-<p><span style="font-size: 16px;">This table represents the GWAS result
-data structure required by the geneNR package. Users can format their
-GWAS results in a similar manner and save them as .csv files for
-input.</span></p>
-<p><span style="font-size: 18px;font-weight: bold;">Note:</span></p>
-<p><span style="font-size: 16px;">For smooth functioning of the package,
-please ensure that the data files are placed in the working
-directory.</span></p>
 <p><span style="font-size: 18px;font-weight: bold;">Parameters:</span></p>
 <p><span style="font-size: 16px;">The function accepts the following
 parameters:</span></p>
@@ -441,7 +470,9 @@ parameters:</span></p>
 SNP.</p>
 <p>downstream: The search window downstream of the current position of
 the SNP.</p>
-<p>Crop: Either “wheat” or “rice”. </span></p>
+<p>Crop: Either “wheat” or “rice”.</p>
+<p>Output A .csv file containing candidate genes retrieved for the
+specified SNP regions.</span></p>
 <p><span style="font-size: 18px;font-weight: bold;">Note:</span></p>
 <p><span style="font-size: 16px;">Both upstream and downstream can be
 specified by the user in base pairs. By default, the search window is
@@ -458,7 +489,63 @@ for the respective regions are retrieved from Ensembl Plants (<a href="https://p
 |-----------------------------------------------------------------------|
 |         |       |                |           |         |protein coding|</code></pre>
 <p></span></p>
-<p><span style="font-size: 16px;">By using the geneNR package,
+<p><span style="font-size: 18px;font-weight: bold;">geneSNPcustom()</span></p>
+<p><span style="font-size: 16px;">Similar to geneSNP, this function
+provides enhanced customization options for identifying candidate genes
+(different search window can be provided by users of each
+SNP).</span></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">geneSNPcustom</span>(<span class="st">&quot;sample_data_wheat_custom&quot;</span>, <span class="at">crop =</span> <span class="st">&quot;wheat&quot;</span>)</span></code></pre></div>
+<p><span style="font-size: 18px;font-weight: bold;">import_hmp()</span></p>
+<p><span style="font-size: 16px;"> Imports Hapmap genotypic data files
+into a format usable by the package.</p>
+<p>Input: Hapmap file (.hmp.txt).</p>
+<p>Output: A processed data frame for SNP analysis.</span></p>
+<p><span style="font-size: 18px;font-weight: bold;">import_vcf()</span>
+<span style="font-size: 16px;"></p>
+<p>Imports Variant Call Format (VCF) files.</p>
+<p>Input: .vcf file.</p>
+<p>Output: A processed data frame for SNP analysis.</span></p>
+<p><span style="font-size: 18px;font-weight: bold;">plot_SNP()</span></p>
+<div id="visualizing-snp-distributions-with-plot_snp" class="section level3">
+<h3>Visualizing SNP Distributions with <code>plot_SNP</code></h3>
+<p><span style="font-size: 16px;">Generates a chromosome map showing SNP
+distributions. The map includes customization aesthetics.</span></p>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<p><span style="font-size: 18px;font-weight: bold;">summariseSNP()</span></p>
+<p><span style="font-size: 16px;">Calculates and summarizes the
+distribution of SNPs across chromosomes based on the provided
+data.</span></p>
+<pre><code>##   Chr SNP_Count
+## 1  1A         5
+## 2  1B         8
+## 3  1D         7
+## 4  2A        31
+## 5  2B        35
+## 6  2D        11
+## 7  3A         8
+## 8  3B        28
+## 9  3D        80</code></pre>
+<p><span style="font-size: 18px;font-weight: bold;">summariseSNP_vcf()</span></p>
+<p><span style="font-size: 16px;">Similar to summariseSNP, this function
+processes data from VCF files.</span></p>
+<p><span style="font-size: 18px;font-weight: bold;">plot_summariseSNP()</span></p>
+<p><span style="font-size: 16px;">Plots a bar chart summarizing SNP
+distributions across chromosomes.</span></p>
+<p><img role="img" src="data:image/png;base64,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" /><!-- --></p>
+<p><span style="font-size: 16px;"> Parameters</p>
+<p>bar_color: Color of the bars.</p>
+<p>label_size: Size of the text labels.</p>
+<p>label_color: Color of the text labels.</span></p>
+<p><span style="font-size: 18px;font-weight: bold;">Sample
+Data</span></p>
+<p><span style="font-size: 16px;">Sample Data for Wheat and Rice Several
+sample datasets for wheat and rice are included in the package. These
+data demonstrate the functionality of the geneNR package.</span></p>
+<p><span style="font-size: 18px;font-weight: bold;">Note:</span></p>
+<p><span style="font-size: 16px;">For smooth functioning of the package,
+please ensure that the data files are placed in the working
+directory.</span></p>
+<p><span style="font-size: 16px;">By using the <b>geneNR</b> package,
 researchers can significantly enhance the efficiency and accuracy of
 their post-GWAS analyses, ultimately contributing to the advancement of
 genomic research and crop improvement.</span></p>
@@ -468,8 +555,9 @@ Association Studies<br />
 - <strong>SNP</strong>: Single Nucleotide Polymorphism<br />
 - <strong>API</strong>: Application Programming Interface<br />
 - <strong>Mbp</strong>: Megabase Pair (1,000,000 base pairs)<br />
-- <strong>CSV</strong>: Comma-Separated Values<br />
-</span></p>
+- <strong>CSV</strong>: Comma-Separated Values - <strong>QTL</strong>:
+Quantitative Trait Loci </span></p>
+</div>
 </div>
 
 

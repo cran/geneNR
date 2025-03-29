@@ -19,7 +19,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <span style="font-size: 18px;font-weight: bold;">Introduction:</span>
 
-<span style="font-size: 16px;">The geneNR package is designed to streamline the post-GWAS (Genome-Wide Association Studies) analysis by automating the identification of candidate genes within a user-defined search window based on the identified SNPs (Single Nucleotide Polymorphisms). This package provides robust support for candidate gene analysis specifically for wheat and rice, making it an invaluable tool for researchers working in the field of genomics.</span>
+<span style="font-size: 16px;">The geneNR package is designed to streamline the post-GWAS (Genome-Wide Association Studies) and QTL (Quantitative Trait Loci) analysis by automating the identification of candidate genes within a user-defined search window based on the identified SNPs (Single Nucleotide Polymorphisms)or QTLs. This package provides robust support for candidate gene analysis specifically for wheat and rice, making it an invaluable tool for researchers working in the field of genomics.</span>
 
 <span style="font-size: 18px;font-weight: bold;">Key Features:</span>
 
@@ -31,9 +31,9 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <span style="font-size: 18px;font-weight: bold;">How It Works:</span>
 
-<span style="font-size: 16px;">***Importing GWAS Results:*** Users begin by importing their GWAS results into the geneNR package. The package includes detailed instructions and a sample_data file to guide users through this process.</span>
+<span style="font-size: 16px;">***Importing GWAS Results:*** Users begin by importing their GWAS or QTL results into the geneNR package. The package includes detailed instructions and a sample_data file to guide users through this process.</span>
 
-<span style="font-size: 16px;">***Identification of Candidate Genes:*** Once the GWAS results are imported, geneNR identifies candidate genes within the specified search window based on the SNPs provided. This automated process not only eliminates the need for manual searches but also significantly reduces the time required, ensuring both accuracy and efficiency.</span>
+<span style="font-size: 16px;">***Identification of Candidate Genes:*** Once the GWAS or QTL results are imported, geneNR identifies candidate genes within the specified search window based on the SNPs provided. This automated process not only eliminates the need for manual searches but also significantly reduces the time required, ensuring both accuracy and efficiency.</span>
 
 <span style="font-size: 16px;">***Exporting Results:*** After the candidate genes are identified, the package exports the results into a ready-to-use output. This format is convenient for further analysis, reporting, and sharing with collaborators.</span>
 
@@ -41,7 +41,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 <span style="font-size: 16px;">To install geneNR package, use the following commands in R:</span>
 
-<span style="font-size: 16px;">The geneNR package is currently in the process of being submitted to CRAN. Once accepted, users will be able to install the package directly from CRAN using the following command in R:</span>
+<span style="font-size: 16px;">The geneNR package is currently available in CRAN. Users can install the package directly from CRAN using the following command in R:</span>
 ```{r geneNR, eval=FALSE}
 # Install the geneNR package (when published on CRAN)
 install.packages("geneNR")
@@ -59,13 +59,66 @@ or
 
 <span style="font-size: 18px;font-weight: bold;">Note:</span>
 
-<span style="font-size: 16px;">As the geneNR package has not been officially published yet, researchers who wish to use it in their studies are encouraged to contact R. Nirmalaruban (Maintainer) at nirmalaruban97@gmail.com. This will ensure that any updates or issues can be addressed promptly, and users can receive the latest information about the package.</span>
+<span style="font-size: 16px;">As the <b>geneNR</b> package has now been officially published on CRAN, users are kindly requested to duly cite the package in their studies. Proper citation ensures acknowledgment of the efforts behind its development and facilitates further usage by the research community. If users require further assistance or have any inquiries, they are encouraged to contact R. Nirmalaruban (Maintainer) at nirmalaruban97@gmail.com.</span>
 
 <span style="font-size: 18px;font-weight: bold;">Data:</span>
 
 <span style="font-size: 16px;">The geneNR package includes sample data for both wheat and rice to demonstrate its functionality. Users can provide their GWAS result files in .csv format to mine candidate genes.</span>
 
-<span style="font-size: 18px;">Sample Data Skeleton:</span>
+
+<span style="font-size: 18px;font-weight: bold;">geneQTL():</span>
+
+<span style="font-size: 16px;">Identifies candidate genes based on QTL (Quantitative Trait Loci) analysis results. Users need to provide input data specifying QTLs, their chromosomal positions, and regions of interest. </span>
+
+```{r geneQTL, eval=FALSE}
+result <- geneQTL("sample_data_wheat_qtl", crop="wheat")
+result <- geneQTL("sample_data_rice_qtl", crop="rice")
+
+```
+
+
+<span style="font-size: 16px;">Here is a sample data skeleton for QTL results to be given as input :</span>
+
+<span style="font-size: 16px;">
+
+    | traits  | Chr | start   |   stop   |
+    |------------------------------------|
+    |  PH     | 7A  |93007534 |95007534  |
+    |         |     |         |          |
+    
+</span>
+
+<span style="font-size: 18px;font-weight: bold;">Parameters:</span>
+
+<span style="font-size: 16px;">The function accepts the following parameters:</span>
+
+<span style="font-size: 16px;">
+
+data_file: Input QTL data in .csv format (which needs to contains columns as detailed above in sample_data_wheat_qtl).
+
+Crop: Either "wheat" or "rice". 
+
+Output A .csv file containing candidate genes retrieved for the specified QTL regions.</span>
+
+<span style="font-size: 18px;">Output Format Example:</span>
+
+<span style="font-size: 16px;">
+
+    | traits  |  QTL  |  gene_size | gene_id | gene_type    |
+    |-------------------------------------------------------|
+    |         |       |            |         |protein coding|
+
+</span>
+
+
+<span style="font-size: 18px;font-weight: bold;">geneSNP()</span>
+
+<span style="font-size: 16px;">Identifies candidate genes based on identified SNPs from GWAS results.</span>
+```{r geneSNP, eval=FALSE}
+result <- geneSNP("sample_data_wheat", 10000, 10000, crop = "wheat")
+result <- geneSNP("sample_data_rice", 10000, 10000, crop = "rice")
+
+```
 
 <span style="font-size: 16px;">Here is a sample data skeleton for GWAS results:</span>
 
@@ -77,12 +130,6 @@ or
     |         |             |      |         |
     
 </span>
-
-<span style="font-size: 16px;">This table represents the GWAS result data structure required by the geneNR package. Users can format their GWAS results in a similar manner and save them as .csv files for input.</span>
-
-<span style="font-size: 18px;font-weight: bold;">Note:</span>
-
-<span style="font-size: 16px;">For smooth functioning of the package, please ensure that the data files are placed in the working directory.</span>
 
 <span style="font-size: 18px;font-weight: bold;">Parameters:</span>
 
@@ -96,7 +143,9 @@ upstream: The search window upstream of the current position of the SNP.
 
 downstream: The search window downstream of the current position of the SNP.
 
-Crop: Either "wheat" or "rice". </span>
+Crop: Either "wheat" or "rice". 
+
+Output A .csv file containing candidate genes retrieved for the specified SNP regions.</span>
 
 <span style="font-size: 18px;font-weight: bold;">Note:</span>
 
@@ -116,9 +165,104 @@ Crop: Either "wheat" or "rice". </span>
 
 </span>
 
+<span style="font-size: 18px;font-weight: bold;">geneSNPcustom()</span>
+
+<span style="font-size: 16px;">Similar to geneSNP, this function provides enhanced customization options for identifying candidate genes (different search window can be provided by users of each SNP).</span>
+```{r geneSNPcustom, eval=FALSE}
+result <- geneSNPcustom("sample_data_wheat_custom", crop = "wheat")
+
+```
+
+<span style="font-size: 18px;font-weight: bold;">import_hmp()</span>
+
+<span style="font-size: 16px;">
+Imports Hapmap genotypic data files into a format usable by the package.
+
+Input: Hapmap file (.hmp.txt).
+
+Output: A processed data frame for SNP analysis.</span>
+
+<span style="font-size: 18px;font-weight: bold;">import_vcf()</span>
+<span style="font-size: 16px;">
+
+Imports Variant Call Format (VCF) files.
+
+Input: .vcf file.
+
+Output: A processed data frame for SNP analysis.</span>
+
+<span style="font-size: 18px;font-weight: bold;">plot_SNP()</span>
 
 
-<span style="font-size: 16px;">By using the geneNR package, researchers can significantly enhance the efficiency and accuracy of their post-GWAS analyses, ultimately contributing to the advancement of genomic research and crop improvement.</span>
+### Visualizing SNP Distributions with `plot_SNP`
+
+<span style="font-size: 16px;">Generates a chromosome map showing SNP distributions. The map includes customization aesthetics.</span>
+
+```{r plot_SNP, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.height=5, fig.width=12}
+library(geneNR)
+chromosome_details <- read.csv(system.file("extdata", "chromosome_details.csv", package = "geneNR"))
+data <- read.csv(system.file("extdata", "identified_SNP.csv", package = "geneNR"))
+chromosome_plot <- plot_SNP(chromosome_details = chromosome_details, data = data,  chromosome_color = "steelblue",  title = "Chromosome map with SNPs", label_color = "black", image_width = 15, image_height = 10)
+chromosome_plot
+
+```
+
+
+
+
+<span style="font-size: 18px;font-weight: bold;">summariseSNP()</span>
+
+<span style="font-size: 16px;">Calculates and summarizes the distribution of SNPs across chromosomes based on the provided data.</span>
+
+```{r summariseSNP, eval=TRUE, echo=FALSE}
+demo_SNP <- system.file("extdata", "demo_SNP.hmp.txt", package = "geneNR")
+ data <- import_hmp(demo_SNP)
+snp_distribution <- summariseSNP(data)
+snp_distribution
+```
+
+
+<span style="font-size: 18px;font-weight: bold;">summariseSNP_vcf()</span>
+
+<span style="font-size: 16px;">Similar to summariseSNP, this function processes data from VCF files.</span>
+
+
+<span style="font-size: 18px;font-weight: bold;">plot_summariseSNP()</span>
+
+<span style="font-size: 16px;">Plots a bar chart summarizing SNP distributions across chromosomes.</span>
+
+```{r plot_summariseSNP, eval=TRUE, echo=FALSE, message=FALSE, warning=FALSE, fig.height=5, fig.width=8}
+demo_SNP <- system.file("extdata", "demo_SNP.hmp.txt", package = "geneNR")
+data <- import_hmp(demo_SNP)
+snp_distribution <- summariseSNP(data)
+plot <- plot_summariseSNP(snp_distribution, bar_color = "skyblue",
+label_size = 3, label_color = "red")
+plot
+
+```
+
+<span style="font-size: 16px;">
+Parameters
+
+bar_color: Color of the bars.
+
+label_size: Size of the text labels.
+
+label_color: Color of the text labels.</span>
+
+
+<span style="font-size: 18px;font-weight: bold;">Sample Data</span>
+
+<span style="font-size: 16px;">Sample Data for Wheat and Rice Several sample datasets for wheat and rice are included in the package. These data demonstrate the functionality of the geneNR package.</span>
+
+
+<span style="font-size: 18px;font-weight: bold;">Note:</span>
+
+<span style="font-size: 16px;">For smooth functioning of the package, please ensure that the data files are placed in the working directory.</span>
+
+
+
+<span style="font-size: 16px;">By using the <b>geneNR</b> package, researchers can significantly enhance the efficiency and accuracy of their post-GWAS analyses, ultimately contributing to the advancement of genomic research and crop improvement.</span>
 
 
 <span style="font-size: 18px;font-weight: bold;">Glossary:</span>
@@ -128,7 +272,8 @@ Crop: Either "wheat" or "rice". </span>
 - **SNP**: Single Nucleotide Polymorphism  
 - **API**: Application Programming Interface  
 - **Mbp**: Megabase Pair (1,000,000 base pairs)  
-- **CSV**: Comma-Separated Values  
+- **CSV**: Comma-Separated Values 
+- **QTL**: Quantitative Trait Loci
 </span>
 
 

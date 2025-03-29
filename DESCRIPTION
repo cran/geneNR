@@ -1,6 +1,6 @@
 Package: geneNR
-Title: Automated Gene Identification for Post-GWAS Analysis
-Version: 1.0.1
+Title: Automated Gene Identification for Post-GWAS and QTL Analysis
+Version: 2.0.1
 Authors@R: c(person("Rajamani", "Nirmalaruban", role = c("aut", "cre", "cph"), email = "nirmalaruban97@gmail.com"),
               person("R.", "Suvitha", role = "aut", email = "suvitha59528@gmail.com"),
               person("Rajbir", "Yadav", role = "aut", email = "rajbiryadav@yahoo.com"),
@@ -12,18 +12,19 @@ Authors@R: c(person("Rajamani", "Nirmalaruban", role = c("aut", "cre", "cph"), e
               person("Kiran B", "Gaikwad", role = "aut", email = "gaikwadkb@gmail.com"),
               person("Naresh Kumar", "Bainsla", role = "aut", email = "Bainsla.breeder.icar@gmail.com"),
               person("S.", "Bhaskar Reddy", role = "aut", email = "bhaskarreddy1996@gmail.com"))
-Description: Facilitates the post-Genome Wide Association Studies (GWAS) analysis of identifying candidate genes within user-defined search window, based on the identified Single Nucleotide Polymorphisms (SNPs) as given by Mazumder AK (2024) <doi:10.1038/s41598-024-66903-3>. It supports candidate gene analysis for wheat and rice. Just import your GWAS result as explained in the sample_data file and the function does all the manual search and retrieve candidate genes for you, while exporting the results into ready-to-use output.
+Description: Facilitates the post-Genome Wide Association Studies (GWAS) and Quantitative Trait Loci (QTL) analysis of identifying candidate genes within user-defined search window, based on the identified Single Nucleotide Polymorphisms (SNPs) as given by Mazumder AK (2024) <doi:10.1038/s41598-024-66903-3>. It supports candidate gene analysis for wheat and rice. Just import your GWAS result as explained in the sample_data file and the function does all the manual search and retrieve candidate genes for you, while exporting the results into ready-to-use output.
 License: CC BY 4.0
 Copyright: (C) 2025 Nirmalaruban
 Encoding: UTF-8
 RoxygenNote: 7.3.2
 Depends: R (>= 3.5)
 LazyData: TRUE
-Imports: readr, stringr, utils, httr, rvest, xml2, writexl
+Imports: readr, stringr, utils, httr, rvest, xml2, writexl, vcfR,
+        ggplot2, ggrepel
 Suggests: knitr, rmarkdown, devtools
 VignetteBuilder: knitr
 NeedsCompilation: no
-Packaged: 2025-03-07 18:37:22 UTC; nirma
+Packaged: 2025-03-29 16:27:50 UTC; nirma
 Author: Rajamani Nirmalaruban [aut, cre, cph],
   R. Suvitha [aut],
   Rajbir Yadav [aut],
@@ -37,4 +38,4 @@ Author: Rajamani Nirmalaruban [aut, cre, cph],
   S. Bhaskar Reddy [aut]
 Maintainer: Rajamani Nirmalaruban <nirmalaruban97@gmail.com>
 Repository: CRAN
-Date/Publication: 2025-03-10 14:50:34 UTC
+Date/Publication: 2025-03-29 16:50:02 UTC
